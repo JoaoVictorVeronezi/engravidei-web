@@ -1,3 +1,17 @@
+p::selection {
+    background: #FF5A87;
+    color: white;
+  }
+
+h3::selection {
+    background: #FF5A87;
+    color: white;
+  }
+br::selection {
+    background: #FF5A87;
+    color: white;
+  }
+
 .pinkContainer {
     background-color: #FF5A87;
     width: 100%;
@@ -29,4 +43,19 @@
 }
 .geral {
     background-color: #f1eeee;
+}
+.buttonEntrar {
+    background-color: #FF5A87 !important;
+    border-color: white !important;
+    width: 200px;
+    margin: 10%;
+    border-radius: 30px !important;
+}
+.buttonEntrar:hover {
+    background-color: white !important; 
+    color: black !important;
+    border-color: #FF5A87 !important;
+  }
+.teste {
+    margin-bottom: 25%;
 }
