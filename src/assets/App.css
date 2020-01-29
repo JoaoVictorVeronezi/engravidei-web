@@ -1,0 +1,32 @@
+.pinkContainer {
+    background-color: #FF5A87;
+    width: 100%;
+    height: 40rem;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.tituloInicial {
+    color: white;
+    margin: 40px;
+}
+.mainContainer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.mainButton {
+    margin: 40px;
+    border-radius: 30px !important;
+}
+.banana {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+}
+.container {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.geral {
+    background-color: #f1eeee;
+}
