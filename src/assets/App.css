@@ -1,23 +1,32 @@
+/*
+===================================================================
+                    CSS de seleção dos campos
+===================================================================
+*/
 p::selection {
     background: #FF5A87;
     color: white;
-  }
-
+}
 h3::selection {
     background: #FF5A87;
     color: white;
-  }
+}
 br::selection {
     background: #FF5A87;
     color: white;
-  }
-
+}
+/*
+===================================================================
+                    CSS da Pagina Inicial/Login
+===================================================================
+*/
 .pinkContainer {
     background-color: #FF5A87;
     width: 100%;
     height: 40rem;
-    padding-left: 0px;
-    padding-right: 0px;
+}
+.loginContainer {
+    height: 40rem;
 }
 .tituloInicial {
     color: white;
@@ -28,18 +37,14 @@ br::selection {
     bottom: 0;
     left: 0;
 }
+.loginCamp {
+    border-radius: 30px !important;
+    height: 3rem !important;
+    width: 15rem!important;
+}
 .mainButton {
     margin: 40px;
     border-radius: 30px !important;
-}
-.banana {
-    width: 100%;
-    height: 100%;
-    margin: 0px;
-}
-.container {
-    padding-left: 0px;
-    padding-right: 0px;
 }
 .geral {
     background-color: #f1eeee;
@@ -56,6 +61,7 @@ br::selection {
     color: black !important;
     border-color: #FF5A87 !important;
   }
-.teste {
-    margin-bottom: 25%;
+.textoLogin {
+    font-size: 17px;
+    color: rgb(119, 118, 118);
 }
