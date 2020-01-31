@@ -20,6 +20,7 @@ br::selection {
                     CSS da Pagina Inicial/Login
 ===================================================================
 */
+
 .pinkContainer {
     background-color: #FF5A87;
     width: 100%;
@@ -47,6 +48,7 @@ br::selection {
     border-radius: 30px !important;
 }
 .geral {
+    height: 100%;
     background-color: #f1eeee;
 }
 .buttonEntrar {
@@ -64,4 +66,27 @@ br::selection {
 .textoLogin {
     font-size: 17px;
     color: rgb(119, 118, 118);
+}
+/*
+===================================================================
+                    CSS da Pagina de Cadastro
+===================================================================
+*/
+.cadastroCamp {
+    border-radius: 30px !important;
+    height: 3rem !important;
+    width: 25rem!important;
+    border-color: #FF5A87 !important;
+}
+.buttonCadastrar {
+    background-color: #FF5A87 !important;
+    border-color: white !important;
+    margin-bottom: 30px;
+    border-radius: 30px !important;
+    
+}
+.buttonCadastrar:hover {
+    background-color: white !important; 
+    color: black !important;
+    border-color: #FF5A87 !important;
 }
