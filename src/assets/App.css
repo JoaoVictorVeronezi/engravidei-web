@@ -1,32 +1,138 @@
+/*
+===================================================================
+                            Fonts                   
+===================================================================
+*/
+
+@font-face {
+    font-family: 'AvenirBook';
+    src: local('AvenirBook'), url(../fonts/AvenirBook.otf) format('opentype');
+}
+@font-face {
+    font-family: 'AvenirMedium';
+    src: local('AvenirMedium'), url(../fonts/AvenirMedium.otf) format('opentype');
+  }
+  @font-face {
+    font-family: 'AvenirRoman';
+    src: local('AvenirRoman'), url(../fonts/AvenirRoman.otf) format('opentype');
+  }
+
+/*
+===================================================================
+                    CSS de seleção dos campos & Estilos Gerais
+===================================================================
+*/
+a {
+    color: #FF5A87;
+}
+p::selection {
+    background: #FF5A87;
+    color: white;
+}
+h3::selection {
+    background: #FF5A87;
+    color: white;
+}
+br::selection {
+    background: #FF5A87;
+    color: white;
+}
+img::selection {
+    background: #FF5A87;
+    color: white;
+}
+label::selection {
+    background: #FF5A87;
+    color: white;
+}
+h3 {
+    color: black;
+    font-family: AvenirMedium;
+
+}
+p {
+    color: black;
+    font-family: AvenirRoman;
+}
+label {
+    color: #707070;
+    font-family: AvenirBook;
+}
+/*
+===================================================================
+                    CSS da Pagina Inicial/Login
+===================================================================
+*/
+
 .pinkContainer {
     background-color: #FF5A87;
     width: 100%;
     height: 40rem;
-    padding-left: 0px;
-    padding-right: 0px;
+}
+.loginContainer {
+    height: 40rem;
 }
 .tituloInicial {
     color: white;
     margin: 40px;
+    
+    font-family: AvenirBook;
 }
+
 .mainContainer {
     position: absolute;
     bottom: 0;
     left: 0;
 }
+.loginCamp {
+    border-radius: 30px !important;
+    height: 3rem !important;
+    width: 15rem!important;
+}
 .mainButton {
     margin: 40px;
     border-radius: 30px !important;
 }
-.banana {
-    width: 100%;
-    height: 100%;
-    margin: 0px;
-}
-.container {
-    padding-left: 0px;
-    padding-right: 0px;
-}
 .geral {
+    height: 100%;
     background-color: #f1eeee;
+}
+.buttonEntrar {
+    background-color: #FF5A87 !important;
+    border-color: white !important;
+    width: 200px;
+    margin: 10%;
+    border-radius: 30px !important;
+}
+.buttonEntrar:hover {
+    background-color: white !important; 
+    color: black !important;
+    border-color: #FF5A87 !important;
+  }
+.textoLogin {
+    font-size: 17px;
+    color: rgb(119, 118, 118);
+}
+/*
+===================================================================
+                    CSS da Pagina de Cadastro
+===================================================================
+*/
+.cadastroCamp {
+    border-radius: 30px !important;
+    height: 3rem !important;
+    width: 25rem!important;
+    border-color: #FF5A87 !important;
+}
+.buttonCadastrar {
+    background-color: #FF5A87 !important;
+    border-color: white !important;
+    margin-bottom: 30px;
+    border-radius: 30px !important;
+    
+}
+.buttonCadastrar:hover {
+    background-color: white !important; 
+    color: black !important;
+    border-color: #FF5A87 !important;
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Logo from "../assets/logo.png";
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
@@ -6,11 +6,12 @@ import Media from 'react-bootstrap/Media'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
-import FormControl from 'react-bootstrap/FormControl';
-import FormCheck from 'react-bootstrap/FormCheck'
+import { InputGroup } from "react-bootstrap";
+import '../fonts/AvenirBook.otf';
 
 import '../assets/App.css';
-import { InputGroup } from "react-bootstrap";
+
+
 
 const MainScreen = () => {
 
@@ -25,8 +26,6 @@ const MainScreen = () => {
 
         setValidated(true);
     };
-
-
     return (
         <Container fluid className="geral p-0 mt-xl-5 mt-xs-0">
             <Container>
@@ -38,56 +37,45 @@ const MainScreen = () => {
                         </Container>
                     </Col>
                     <Col xl={4} md={4} lg={4} >
-                        <Container>
-                            <Row>
-                                <Col xs={12} className="d-flex justify-content-center">
+                            <Row className="loginContainer">
+                                <Col xs={12} className="d-flex justify-content-center mb-5">
                                     <Media>
-                                        <img width={128} height={128} src={Logo} />
+                                        <img width={130} height={130} src={Logo} alt="Logo" />
                                     </Media>
                                 </Col>
-                                <Col className="d-flex justify-content-center">
-                                    <Container>
-                                        <Form  validated={validated} onSubmit={handleSubmit}>
-                                            <Form.Group controlId="EmailLogin">
-                                                <Form.Label>Email address</Form.Label>
+                                <Col xs={12} className="d-flex justify-content-center mb-5 mt-5">
+                                    <Form validated={validated} onSubmit={handleSubmit}>
+                                        <Form.Group controlId="EmailLogin">
+                                            <Form.Control 
+                                            placeholder="Email"
+                                                className="loginCamp"
+                                                type="email"
+                                                required
+                                            />
+                                            <Form.Control.Feedback>Perfeito!</Form.Control.Feedback>
+                                        </Form.Group>
+                                        <Form.Group controlId="PasswordLogin">
                                                 <Form.Control
-                                                    type="email"
-                                                    placeholder="Entre com Email"
+                                                    placeholder="Senha"
+                                                    className="loginCamp"
+                                                    type="password"
                                                     required
                                                 />
                                                 <Form.Control.Feedback>Perfeito!</Form.Control.Feedback>
-                                            </Form.Group>
-                                            <Form.Group controlId="PasswordLogin">
-                                                <Form.Label>Senha</Form.Label>
-                                                <InputGroup>
-                                                    <InputGroup.Prepend>
-                                                        <InputGroup.Text id="">Icon</InputGroup.Text>
-                                                    </InputGroup.Prepend>
-                                                    <Form.Control
-                                                        type="password"
-                                                        placeholder="Password"
-                                                        required
-                                                    />
-                                                    <Form.Control.Feedback>Perfeito!</Form.Control.Feedback>
-                                                </InputGroup>
-                                            </Form.Group>
-                                                <Button type="submit">Submit form</Button>
-                                        </Form>
-                                    </Container>
+                                        </Form.Group>
+                                        <Button type="submit" className="buttonEntrar">Entrar</Button>
+                                    </Form>
                                 </Col>
-                                <Col>
-                                    <Container>
-                                        <h1>Escrito embaixo</h1>
-                                    </Container>
+                                <Col xs={12} className="d-flex justify-content-center mt-4">
+                                    <p className="textoLogin"><a href="#">Problemas com o login? Esqueceu sua Senha?</a></p>
                                 </Col>
                             </Row>
-                        </Container>
                     </Col>
                 </Row>
             </Container>
-            </Container>
-            );
-        }
-        
-        
+        </Container>
+    );
+}
+
+
 export default MainScreen;
