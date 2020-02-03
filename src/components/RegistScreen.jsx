@@ -9,8 +9,7 @@ import Media from 'react-bootstrap/Media'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
-import { InputGroup } from "react-bootstrap";
-
+import '../fonts/AvenirBook.otf';
 
 
 import '../assets/App.css';
@@ -85,7 +84,8 @@ const RegistScreen = () => {
                                 <Form.Control.Feedback>Perfeito!</Form.Control.Feedback>
                             </Form.Group>
                             <Button type="submit" className="buttonCadastrar">Cadastrar</Button>
-                            <p>Ja possui Conta? Faça Seu login</p>
+                          <p><a href="#">Ja possui Conta?Faça Seu login</a></p>
+                           
                         </Form>
                     </Col>
                 </Col>

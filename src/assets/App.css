@@ -1,8 +1,30 @@
 /*
 ===================================================================
-                    CSS de seleção dos campos
+                            Fonts                   
 ===================================================================
 */
+
+@font-face {
+    font-family: 'AvenirBook';
+    src: local('AvenirBook'), url(../fonts/AvenirBook.otf) format('opentype');
+}
+@font-face {
+    font-family: 'AvenirMedium';
+    src: local('AvenirMedium'), url(../fonts/AvenirMedium.otf) format('opentype');
+  }
+  @font-face {
+    font-family: 'AvenirRoman';
+    src: local('AvenirRoman'), url(../fonts/AvenirRoman.otf) format('opentype');
+  }
+
+/*
+===================================================================
+                    CSS de seleção dos campos & Estilos Gerais
+===================================================================
+*/
+a {
+    color: #FF5A87;
+}
 p::selection {
     background: #FF5A87;
     color: white;
@@ -23,6 +45,19 @@ label::selection {
     background: #FF5A87;
     color: white;
 }
+h3 {
+    color: black;
+    font-family: AvenirMedium;
+
+}
+p {
+    color: black;
+    font-family: AvenirRoman;
+}
+label {
+    color: #707070;
+    font-family: AvenirBook;
+}
 /*
 ===================================================================
                     CSS da Pagina Inicial/Login
@@ -40,7 +75,10 @@ label::selection {
 .tituloInicial {
     color: white;
     margin: 40px;
+    
+    font-family: AvenirBook;
 }
+
 .mainContainer {
     position: absolute;
     bottom: 0;

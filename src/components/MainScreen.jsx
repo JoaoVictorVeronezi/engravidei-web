@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import { InputGroup } from "react-bootstrap";
+import '../fonts/AvenirBook.otf';
 
 import '../assets/App.css';
 
@@ -54,7 +55,6 @@ const MainScreen = () => {
                                             <Form.Control.Feedback>Perfeito!</Form.Control.Feedback>
                                         </Form.Group>
                                         <Form.Group controlId="PasswordLogin">
-                                            <InputGroup>
                                                 <Form.Control
                                                     placeholder="Senha"
                                                     className="loginCamp"
@@ -62,13 +62,12 @@ const MainScreen = () => {
                                                     required
                                                 />
                                                 <Form.Control.Feedback>Perfeito!</Form.Control.Feedback>
-                                            </InputGroup>
                                         </Form.Group>
                                         <Button type="submit" className="buttonEntrar">Entrar</Button>
                                     </Form>
                                 </Col>
                                 <Col xs={12} className="d-flex justify-content-center mt-4">
-                                    <p className="textoLogin">Problemas com o login? Esqueceu sua Senha?</p>
+                                    <p className="textoLogin"><a href="#">Problemas com o login? Esqueceu sua Senha?</a></p>
                                 </Col>
                             </Row>
                     </Col>
