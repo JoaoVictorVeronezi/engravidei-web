@@ -56,7 +56,7 @@ const MainScreen = () => {
                                         <Form.Group controlId="PasswordLogin">
                                             <InputGroup>
                                                 <Form.Control
-                                                placeholder="Senha"
+                                                    placeholder="Senha"
                                                     className="loginCamp"
                                                     type="password"
                                                     required

@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import Logo from "../assets/logo.png";
+import CalenderLogo from "../assets/calendar.png";
+import PregnantLogo from "../assets/pregnant.png";
+import ChecklistLogo from "../assets/checklist.png";
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Media from 'react-bootstrap/Media'
@@ -7,6 +10,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import { InputGroup } from "react-bootstrap";
+
+
 
 import '../assets/App.css';
 
@@ -24,9 +29,9 @@ const RegistScreen = () => {
         setValidated(true);
     };
     return (
-        <Container className="geral p-0 mt-xl-5 mt-xs-0 ml-5">
+        <Container className="geral pt-5">
             <Row>
-                <Col name="Esquerda" xs={12} xl={8} sm={12} md={8} lg={8} className="justify-content-center">
+                <Col name="Esquerda" xs={12} xl={6} sm={12} md={8} lg={8} className="justify-content-center">
                     <Col>
                         <h3>Faça seu Cadastro!</h3>
                     </Col>
@@ -55,10 +60,8 @@ const RegistScreen = () => {
                             <Form.Label>Sexo</Form.Label>
                             {['radio'].map(type => (
                                 <div key={`inline-${type}`} className="mb-3">
-                                    <Form.Check inline label="Masculino" type={type} id={`masc-${type}-1`}  required/>
-                                    <Form.Check inline label="Feminino" type={type} id={`fem-${type}-2`}  required/>
-                                   
-                                   
+                                    <Form.Check inline label="Masculino" type={type} id={`masc-${type}-1`} required />
+                                    <Form.Check inline label="Feminino" type={type} id={`fem-${type}-2`} required />
                                 </div>
                             ))}
                             <Form.Label>CPF</Form.Label>
@@ -81,17 +84,60 @@ const RegistScreen = () => {
                                 />
                                 <Form.Control.Feedback>Perfeito!</Form.Control.Feedback>
                             </Form.Group>
-                            <Button type="submit" m-0 className="buttonCadastrar">Cadastrar</Button>
+                            <Button type="submit" className="buttonCadastrar">Cadastrar</Button>
                             <p>Ja possui Conta? Faça Seu login</p>
                         </Form>
                     </Col>
                 </Col>
-                <Col name="Direita" xl={4} md={4} lg={4} >
+                <Col name="Direita" xl={6} md={4} lg={4} >
                     <Row>
-                        <Col name="Logo"> <h1>teste2</h1></Col>
-                        <Col name="SegundoEsc"><h1>teste3</h1></Col>
-                        <Col name="TerceiroEsc"><h1>teste4</h1></Col>
-                        <Col name="QuartoEsc"><h1>teste5</h1></Col>
+                        <Col xs={12} className="d-flex justify-content-center ">
+                            <Media>
+                                <img width={110} height={110} src={Logo} alt="Logo" />
+                            </Media>
+                        </Col>
+                        <Col name="SegundoEsc" xl={12} className="mt-5">
+                            <Row>
+                                <Col xl={2} >
+                                    <Media>
+                                        <img src={CalenderLogo} width={70} height={70} />
+                                    </Media>
+                                </Col>
+                                <Col xl={10}>
+                                    <p className="mt-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                    sed do eiusmod tempor incididunt ut labore et dolore
+                                    </p>
+                                </Col>
+                            </Row>
+                        </Col>
+                        <Col xl={12} className="mt-5">
+                        <Row>
+                            <Col xl={2}>
+                                <Media>
+                                    <img src={ChecklistLogo} width={70} height={70} />
+                                </Media>
+                            </Col>
+                            <Col xl={10}>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                sed do eiusmod tempor incididunt ut labore et dolore
+                                </p>
+                            </Col>
+                        </Row>
+                        </Col>
+                        <Col xl={12} className="mt-5">
+                        <Row>
+                            <Col xl={2}>
+                                <Media>
+                                    <img src={PregnantLogo} width={70} height={70} />
+                                </Media>
+                            </Col>
+                            <Col xl={10}>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                sed do eiusmod tempor incididunt ut labore et dolore
+                                </p>
+                            </Col>
+                        </Row>
+                        </Col>
                     </Row>
                 </Col>
             </Row>

@@ -15,6 +15,14 @@ br::selection {
     background: #FF5A87;
     color: white;
 }
+img::selection {
+    background: #FF5A87;
+    color: white;
+}
+label::selection {
+    background: #FF5A87;
+    color: white;
+}
 /*
 ===================================================================
                     CSS da Pagina Inicial/Login
