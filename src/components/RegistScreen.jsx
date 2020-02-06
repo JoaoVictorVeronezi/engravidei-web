@@ -84,7 +84,7 @@ const RegistScreen = () => {
                                 <Form.Control.Feedback>Perfeito!</Form.Control.Feedback>
                             </Form.Group>
                             <Button type="submit" className="buttonCadastrar">Cadastrar</Button>
-                          <p><a href="#">Ja possui Conta?Faça Seu login</a></p>
+                          <p><a href="#">Ja possui Conta? Faça Seu login!</a></p>
                            
                         </Form>
                     </Col>
