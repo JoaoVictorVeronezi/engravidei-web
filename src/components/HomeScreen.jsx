@@ -1,0 +1,40 @@
+import React, { useState } from "react";
+import ProfilePic from "../assets/user.png";
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import Media from 'react-bootstrap/Media'
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Nav from 'react-bootstrap/Nav';
+
+
+
+import '../assets/App.css';
+
+const HomeScreen = () => {
+    return (
+        <Container fluid className="geral">
+            <Row className="geral">
+                <Col name="Esquerda" xs={6} xl={2} sm={3} md={3} lg={3} className="justify-content-center menu">
+                    <Media className="justify-content-center banana mt-5">
+                        <figure>
+                            <img width={120} height={120} src={ProfilePic} className="mb-2" />
+                            <figcaption><p>Dr. João Victor Veronezi</p></figcaption>
+                        </figure>
+                    </Media>
+                        <Nav className="flex-column">
+                            <Nav.Link href="/home"><p>Consultas</p></Nav.Link>
+                            <Nav.Link href="/home"><p>Pacientes</p></Nav.Link>
+                            
+                        </Nav>
+                        <Button variant="link"><span>Sair</span></Button>
+                </Col>
+                <Col xl={10} xs={6} sm={9} md={9} lg={9} name="Direita">
+                    
+                </Col>
+            </Row>
+        </Container>
+    );
+}
+
+export default HomeScreen;

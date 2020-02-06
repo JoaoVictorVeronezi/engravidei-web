@@ -6,7 +6,8 @@ import Media from 'react-bootstrap/Media'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
-import { InputGroup } from "react-bootstrap";
+
+
 import '../fonts/AvenirBook.otf';
 
 import '../assets/App.css';
@@ -27,7 +28,7 @@ const MainScreen = () => {
         setValidated(true);
     };
     return (
-        <Container fluid className="geral p-0 mt-xl-5 mt-xs-0">
+        <Container fluid className="geral p-0 pt-xl-5 pt-xs-0">
             <Container>
                 <Row>
                     <Col xs={12} xl={8} sm={12} md={8} lg={8} className="pinkContainer align-items-center">

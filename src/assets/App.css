@@ -58,6 +58,7 @@ label {
     color: #707070;
     font-family: AvenirBook;
 }
+
 /*
 ===================================================================
                     CSS da Pagina Inicial/Login
@@ -135,4 +136,32 @@ label {
     background-color: white !important; 
     color: black !important;
     border-color: #FF5A87 !important;
+}
+/*
+===================================================================
+                    CSS da Pagina de HOME
+===================================================================
+*/
+
+.teste {
+    display: block;
+}
+.banana {
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+}
+.menu {
+    position: relative;
+    height: 100%;
+    border-right: 1px solid black;
+}
+
+.menu span {
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   margin-left: 1rem;
+   font-size: 20px;
+   font-family: AvenirMedium;
 }
