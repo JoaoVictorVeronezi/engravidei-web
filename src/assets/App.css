@@ -136,3 +136,21 @@ label {
     color: black !important;
     border-color: #FF5A87 !important;
 }
+/*
+===================================================================
+                    CSS da Pagina de HOME
+===================================================================
+*/
+
+.teste {
+    display: block;
+}
+.banana {
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+}
+.menu {
+    border-right: 1px solid black;
+    height: 100%;
+}
