@@ -8,11 +8,12 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 
 
+
 import '../fonts/AvenirBook.otf';
 
 import '../assets/App.css';
 
-
+import { Link } from 'react-router-dom';
 
 const MainScreen = () => {
 
@@ -34,7 +35,10 @@ const MainScreen = () => {
                     <Col xs={12} xl={8} sm={12} md={8} lg={8} className="pinkContainer align-items-center">
                         <Container className="mainContainer" >
                             <h3 className="tituloInicial ">Bem Vindo ao<br /> Engravidei :)</h3>
-                            <Button variant="outline-light" className="mainButton">Faça Seu Cadastro!</Button>
+                            <Link to="/cadastro">
+                            <Button  variant="outline-light" className="mainButton">Faça Seu Cadastro!</Button>
+                            </Link>
+                            
                         </Container>
                     </Col>
                     <Col xl={4} md={4} lg={4} >

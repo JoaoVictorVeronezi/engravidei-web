@@ -9,6 +9,7 @@ import Media from 'react-bootstrap/Media'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
+import { Link } from 'react-router-dom';
 import '../fonts/AvenirBook.otf';
 
 
@@ -83,8 +84,9 @@ const RegistScreen = () => {
                                 />
                                 <Form.Control.Feedback>Perfeito!</Form.Control.Feedback>
                             </Form.Group>
+                            
                             <Button type="submit" className="buttonCadastrar">Cadastrar</Button>
-                          <p><a href="#">Ja possui Conta? Faça Seu login!</a></p>
+                          <p><Link to="/">Ja possui Conta? Faça Seu login!</Link></p>
                            
                         </Form>
                     </Col>
