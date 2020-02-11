@@ -72,7 +72,7 @@ const MainScreen = () => {
                                     </Form>
                                 </Col>
                                 <Col xs={12} className="d-flex justify-content-center mt-4">
-                                    <p className="textoLogin"><a href="#">Problemas com o login? Esqueceu sua Senha?</a></p>
+                                    <p className="textoLogin"><a href="/">Problemas com o login? Esqueceu sua Senha?</a></p>
                                 </Col>
                             </Row>
                     </Col>
