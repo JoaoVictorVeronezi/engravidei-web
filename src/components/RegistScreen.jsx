@@ -1,31 +1,59 @@
 import React, { useState } from "react";
-import Logo from "../assets/logo.png";
-import CalenderLogo from "../assets/calendar.png";
-import PregnantLogo from "../assets/pregnant.png";
-import ChecklistLogo from "../assets/checklist.png";
-import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Media from 'react-bootstrap/Media'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+//importações remotas
+
 import '../fonts/AvenirBook.otf';
-
-
+import Logo from "../assets/logo.png";
+import CalenderLogo from "../assets/calendar.png";
+import PregnantLogo from "../assets/pregnant.png";
+import ChecklistLogo from "../assets/checklist.png";
+import Container from 'react-bootstrap/Container';
 import '../assets/App.css';
+//importações locais
 
 
 const RegistScreen = () => {
     const [validated, setValidated] = useState(false);
 
+    
     const handleSubmit = event => {
         const form = event.currentTarget;
+        
+    
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
         }
-
         setValidated(true);
+        const {
+            nome,
+            email,
+            sexo,
+            cpf,
+            senha
+        } = this.state;
+
+        axios.post("url_da_requisição", {
+            user: {
+                nome: nome,
+                email: email,
+                sexo: sexo,
+                cpf: cpf, 
+                senha: senha
+            }
+        },
+        { withCredentials: true }
+        ).then(response => {
+            console.log("registration res", response);
+        }).catch(error => {
+            console.log("registration error", error); 
+        })
     };
     return (
         <Container className="geral pt-5">
@@ -39,6 +67,7 @@ const RegistScreen = () => {
                             <Form.Label>Nome</Form.Label>
                             <Form.Group controlId="CadastroNome">
                                 <Form.Control
+                                    name="nome"
                                     placeholder="Seu Nome"
                                     className="cadastroCamp"
                                     type="text"
@@ -49,6 +78,7 @@ const RegistScreen = () => {
                             <Form.Label>Email</Form.Label>
                             <Form.Group controlId="CadastroEmail">
                                 <Form.Control
+                                    nome="email"
                                     placeholder="Seu Email"
                                     className="cadastroCamp"
                                     type="email"
@@ -59,13 +89,24 @@ const RegistScreen = () => {
                             <Form.Label>Sexo</Form.Label>
                             {['radio'].map(type => (
                                 <div key={`inline-${type}`} className="mb-3">
-                                    <Form.Check inline label="Masculino" type={type} id={`masc-${type}-1`} required />
-                                    <Form.Check inline label="Feminino" type={type} id={`fem-${type}-2`} required />
+                                    <Form.Check 
+                                        name="sexo"
+                                        inline label="Masculino" 
+                                        type={type} 
+                                        id={`masc-${type}-1`} 
+                                        required />
+                                    <Form.Check
+                                        name="sexo"
+                                        inline label="Feminino" 
+                                        type={type} 
+                                        id={`fem-${type}-2`} 
+                                        required />
                                 </div>
                             ))}
                             <Form.Label>CPF</Form.Label>
                             <Form.Group controlId="CPF">
                                 <Form.Control
+                                    name="CPF"
                                     placeholder="Somente Numeros"
                                     className="cadastroCamp"
                                     type="number"
@@ -76,6 +117,7 @@ const RegistScreen = () => {
                             <Form.Label>Senha</Form.Label>
                             <Form.Group controlId="Senha">
                                 <Form.Control
+                                    name="senha"
                                     placeholder="*******"
                                     className="cadastroCamp"
                                     type="password"
@@ -83,8 +125,9 @@ const RegistScreen = () => {
                                 />
                                 <Form.Control.Feedback>Perfeito!</Form.Control.Feedback>
                             </Form.Group>
+                            
                             <Button type="submit" className="buttonCadastrar">Cadastrar</Button>
-                          <p><a href="#">Ja possui Conta? Faça Seu login!</a></p>
+                          <p><Link to="/">Ja possui Conta? Faça Seu login!</Link></p>
                            
                         </Form>
                     </Col>
@@ -100,7 +143,7 @@ const RegistScreen = () => {
                             <Row>
                                 <Col xl={2} >
                                     <Media>
-                                        <img src={CalenderLogo} width={70} height={70} />
+                                        <img src={CalenderLogo} alt="calendario" width={70} height={70} />
                                     </Media>
                                 </Col>
                                 <Col xl={10}>
@@ -114,7 +157,7 @@ const RegistScreen = () => {
                         <Row>
                             <Col xl={2}>
                                 <Media>
-                                    <img src={ChecklistLogo} width={70} height={70} />
+                                    <img src={ChecklistLogo} alt="checklist"  width={70} height={70} />
                                 </Media>
                             </Col>
                             <Col xl={10}>
@@ -128,7 +171,7 @@ const RegistScreen = () => {
                         <Row>
                             <Col xl={2}>
                                 <Media>
-                                    <img src={PregnantLogo} width={70} height={70} />
+                                    <img src={PregnantLogo} alt="gravida" width={70} height={70} />
                                 </Media>
                             </Col>
                             <Col xl={10}>
