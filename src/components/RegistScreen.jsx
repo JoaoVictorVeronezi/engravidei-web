@@ -25,6 +25,12 @@ const RegistScreen = () => {
     const handleSubmit = event => {
         const form = event.currentTarget;
         
+    
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        setValidated(true);
         const {
             nome,
             email,
@@ -43,13 +49,11 @@ const RegistScreen = () => {
             }
         },
         { withCredentials: true }
-        )
-    
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
-        setValidated(true);
+        ).then(response => {
+            console.log("registration res", response);
+        }).catch(error => {
+            console.log("registration error", error); 
+        })
     };
     return (
         <Container className="geral pt-5">
