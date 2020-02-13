@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { isAuthenticated } from './auth';
@@ -15,10 +15,9 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
                 <Redirect to={{ pathname: '/', state: { from: props.location } }} />
             )
     )} />
-
 );
 
-const Routes = () => (
+const Routes = () => ( 
     <BrowserRouter>
         <Switch>
             <Route exact path="/" component={Main} />
@@ -26,7 +25,6 @@ const Routes = () => (
             <Route path="/cadastro" component={Cadastro} />
         </Switch>
     </BrowserRouter>
-
 );
 
 export default Routes;

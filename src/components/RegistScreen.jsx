@@ -15,44 +15,39 @@ import PregnantLogo from "../assets/pregnant.png";
 import ChecklistLogo from "../assets/checklist.png";
 import Container from 'react-bootstrap/Container';
 import '../assets/App.css';
+import {cadastro, SigIn} from '../services/auth';
+import {setCookie} from '../utils/cookieUtil';
 //importações locais
 
 
 const RegistScreen = () => {
-    const [validated, setValidated] = useState(false);
-
     
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [cpf, setCpf] = useState("");
+    const [senha, setSenha] = useState("");
+
     const handleSubmit = event => {
-        const form = event.currentTarget;
-        
-    
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
+        event.preventDefault();
+        const form = {
+            name: name,
+            email: email, 
+            cpf: cpf,
+            senha: senha
         }
-        setValidated(true);
-        const {
-            nome,
-            email,
-            sexo,
-            cpf,
-            senha
-        } = this.state;
+        console.log(form);
 
-        axios.post("url_da_requisição", {
-            user: {
-                nome: nome,
-                email: email,
-                sexo: sexo,
-                cpf: cpf, 
-                senha: senha
-            }
-        },
-        { withCredentials: true }
-        ).then(response => {
-            console.log("registration res", response);
-        }).catch(error => {
-            console.log("registration error", error); 
+        cadastro(form).then(res => {
+            SigIn(form.email, form.senha).then(resp => {
+                console.log(resp);
+                setCookie("token", resp.data.sessao.token, {expires: Number.parseInt(resp.data.sessao.duracao)} )
+                setCookie("userID", resp.data.usuario.id)
+                
+            }).catch(error => {
+                console.log(error);
+            })
+        }).catch(error =>{
+            console.log(error);
         })
     };
     return (
@@ -63,10 +58,11 @@ const RegistScreen = () => {
                         <h3>Faça seu Cadastro!</h3>
                     </Col>
                     <Col className="mt-5">
-                        <Form validated={validated} onSubmit={handleSubmit}>
+                        <Form onSubmit={handleSubmit}>
                             <Form.Label>Nome</Form.Label>
-                            <Form.Group controlId="CadastroNome">
-                                <Form.Control
+                            <Form.Group controlId="nome">
+                                <Form.Control 
+                                    onChange={name => {setName(name.target.value)}}
                                     name="nome"
                                     placeholder="Seu Nome"
                                     className="cadastroCamp"
@@ -76,8 +72,9 @@ const RegistScreen = () => {
                                 <Form.Control.Feedback>Perfeito!</Form.Control.Feedback>
                             </Form.Group>
                             <Form.Label>Email</Form.Label>
-                            <Form.Group controlId="CadastroEmail">
+                            <Form.Group controlId="email">
                                 <Form.Control
+                                    onChange={email => {setEmail(email.target.value)}}
                                     nome="email"
                                     placeholder="Seu Email"
                                     className="cadastroCamp"
@@ -104,9 +101,10 @@ const RegistScreen = () => {
                                 </div>
                             ))}
                             <Form.Label>CPF</Form.Label>
-                            <Form.Group controlId="CPF">
+                            <Form.Group controlId="cpf">
                                 <Form.Control
-                                    name="CPF"
+                                    onChange={cpf => {setCpf(cpf.target.value)}}
+                                    name="cpf"
                                     placeholder="Somente Numeros"
                                     className="cadastroCamp"
                                     type="number"
@@ -115,8 +113,9 @@ const RegistScreen = () => {
                                 <Form.Control.Feedback>Perfeito!</Form.Control.Feedback>
                             </Form.Group>
                             <Form.Label>Senha</Form.Label>
-                            <Form.Group controlId="Senha">
+                            <Form.Group controlId="senha">
                                 <Form.Control
+                                    onChange={senha => {setSenha(senha.target.value)}}
                                     name="senha"
                                     placeholder="*******"
                                     className="cadastroCamp"
