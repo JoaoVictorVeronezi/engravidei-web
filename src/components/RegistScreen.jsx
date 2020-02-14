@@ -149,8 +149,8 @@ const RegistScreen = () => {
                                     </Media>
                                 </Col>
                                 <Col xl={10}>
-                                    <p className="mt-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                    sed do eiusmod tempor incididunt ut labore et dolore
+                                    <p className="mt-1"> O Engravidei, Proporciona um ótimo calendario, integrado entre o médico e sua paciente
+                                    para anotações de consultas e retornos. 
                                     </p>
                                 </Col>
                             </Row>
@@ -163,8 +163,8 @@ const RegistScreen = () => {
                                 </Media>
                             </Col>
                             <Col xl={10}>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                sed do eiusmod tempor incididunt ut labore et dolore
+                                <p> Temos como uma das principais funcionalidades, nosso checklist. Onde tanto o médico pode adicionar e remover 
+                                    itens como a gestante.
                                 </p>
                             </Col>
                         </Row>
@@ -177,8 +177,8 @@ const RegistScreen = () => {
                                 </Media>
                             </Col>
                             <Col xl={10}>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                sed do eiusmod tempor incididunt ut labore et dolore
+                                <p> Nosso objetivo é garantir, por meio de nossas funcionalidades e forma unificada de informação,
+                                    a saúde tanto da gestante quanto do Bebê.
                                 </p>
                             </Col>
                         </Row>
