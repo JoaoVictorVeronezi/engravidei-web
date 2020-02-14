@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import {Redirect} from "react-router-dom";
 //importações remotas
 
 import '../fonts/AvenirBook.otf';
@@ -24,28 +25,30 @@ const RegistScreen = () => {
     
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const [cpf, setCpf] = useState("");
     const [senha, setSenha] = useState("");
 
+    const redirect = () => {
+        return (<Redirect to={"/home"} />);
+        
+    }
     const handleSubmit = event => {
         event.preventDefault();
         const form = {
             name: name,
             email: email, 
-            cpf: cpf,
             senha: senha
         }
         console.log(form);
-
-        cadastro(form).then(res => {
-            SigIn(form.email, form.senha).then(resp => {
+        
+        cadastro(form).then(resp => {
+           // SigIn(form.email, form.senha).then(resp => {
                 console.log(resp);
                 setCookie("token", resp.data.sessao.token, {expires: Number.parseInt(resp.data.sessao.duracao)} )
                 setCookie("userID", resp.data.usuario.id)
-                
-            }).catch(error => {
+                redirect();
+          //  }).catch(error => {
                 console.log(error);
-            })
+         //   })
         }).catch(error =>{
             console.log(error);
         })
@@ -103,7 +106,7 @@ const RegistScreen = () => {
                             <Form.Label>CPF</Form.Label>
                             <Form.Group controlId="cpf">
                                 <Form.Control
-                                    onChange={cpf => {setCpf(cpf.target.value)}}
+                                    
                                     name="cpf"
                                     placeholder="Somente Numeros"
                                     className="cadastroCamp"

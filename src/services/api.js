@@ -1,6 +1,6 @@
 import axios from 'axios';
 export default () => {
     return axios.create({
-        baseURL: "http://ibiza.dcc.ufla.br:5020"
+        baseURL: "https://engravidei.herokuapp.com"
     })
 }

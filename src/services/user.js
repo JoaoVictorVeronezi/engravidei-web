@@ -6,7 +6,7 @@ const getUserData = (token, userID) => {
             Authorization: `Bearer ${token}`,
         },
     }
-    return api().get(`/usuarios/${userID}`, config);
+    return api().get(`/getPatients/${userID}`, config);
 }
 
 export {getUserData};
