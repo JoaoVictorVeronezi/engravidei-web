@@ -47,7 +47,7 @@ const RegistScreen = () => {
                 setCookie("userID", resp.data.usuario.id)
                 redirect();
           //  }).catch(error => {
-                console.log(error);
+               // console.log(error);
          //   })
         }).catch(error =>{
             console.log(error);
