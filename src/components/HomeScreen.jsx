@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ProfilePic from "../assets/user.png";
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
@@ -7,11 +7,21 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Nav from 'react-bootstrap/Nav';
 import { Link } from 'react-router-dom';
-
+import {getUserData} from '../services/user';
+import {getCookie} from '../utils/cookieUtil';
 
 import '../assets/App.css';
 
 const HomeScreen = () => {
+    const [userData, setUserData] = useState("");
+    useEffect(() => {
+        getUserData(getCookie("token"), getCookie("userID")).then(res => {
+            setUserData(res.data);
+        }).catch(error => {
+            console.log(error);
+        })
+    }, [])
+
     return (
         <Container fluid className="geral">
             <Row className="geral">
@@ -32,7 +42,10 @@ const HomeScreen = () => {
                         </Link>
                 </Col>
                 <Col xl={10} xs={6} sm={9} md={9} lg={9} name="Direita">
-                    
+                        <p>{userData.nome}</p>
+                        <p>{userData.email}</p>
+                        <p>{userData.telefone}</p>
+                        <p>{userData.cpf}</p>
                 </Col>
             </Row>
         </Container>

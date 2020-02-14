@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import {Redirect} from "react-router-dom";
 //importações remotas
 
 import '../fonts/AvenirBook.otf';
@@ -15,44 +16,41 @@ import PregnantLogo from "../assets/pregnant.png";
 import ChecklistLogo from "../assets/checklist.png";
 import Container from 'react-bootstrap/Container';
 import '../assets/App.css';
+import {cadastro, SigIn} from '../services/auth';
+import {setCookie} from '../utils/cookieUtil';
 //importações locais
 
 
 const RegistScreen = () => {
-    const [validated, setValidated] = useState(false);
-
     
-    const handleSubmit = event => {
-        const form = event.currentTarget;
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [senha, setSenha] = useState("");
+
+    const redirect = () => {
+        return (<Redirect to={"/home"} />);
         
-    
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
+    }
+    const handleSubmit = event => {
+        event.preventDefault();
+        const form = {
+            name: name,
+            email: email, 
+            senha: senha
         }
-        setValidated(true);
-        const {
-            nome,
-            email,
-            sexo,
-            cpf,
-            senha
-        } = this.state;
-
-        axios.post("url_da_requisição", {
-            user: {
-                nome: nome,
-                email: email,
-                sexo: sexo,
-                cpf: cpf, 
-                senha: senha
-            }
-        },
-        { withCredentials: true }
-        ).then(response => {
-            console.log("registration res", response);
-        }).catch(error => {
-            console.log("registration error", error); 
+        console.log(form);
+        
+        cadastro(form).then(resp => {
+           // SigIn(form.email, form.senha).then(resp => {
+                console.log(resp);
+                setCookie("token", resp.data.sessao.token, {expires: Number.parseInt(resp.data.sessao.duracao)} )
+                setCookie("userID", resp.data.usuario.id)
+                redirect();
+          //  }).catch(error => {
+               // console.log(error);
+         //   })
+        }).catch(error =>{
+            console.log(error);
         })
     };
     return (
@@ -63,10 +61,11 @@ const RegistScreen = () => {
                         <h3>Faça seu Cadastro!</h3>
                     </Col>
                     <Col className="mt-5">
-                        <Form validated={validated} onSubmit={handleSubmit}>
+                        <Form onSubmit={handleSubmit}>
                             <Form.Label>Nome</Form.Label>
-                            <Form.Group controlId="CadastroNome">
-                                <Form.Control
+                            <Form.Group controlId="nome">
+                                <Form.Control 
+                                    onChange={name => {setName(name.target.value)}}
                                     name="nome"
                                     placeholder="Seu Nome"
                                     className="cadastroCamp"
@@ -76,8 +75,9 @@ const RegistScreen = () => {
                                 <Form.Control.Feedback>Perfeito!</Form.Control.Feedback>
                             </Form.Group>
                             <Form.Label>Email</Form.Label>
-                            <Form.Group controlId="CadastroEmail">
+                            <Form.Group controlId="email">
                                 <Form.Control
+                                    onChange={email => {setEmail(email.target.value)}}
                                     nome="email"
                                     placeholder="Seu Email"
                                     className="cadastroCamp"
@@ -104,9 +104,10 @@ const RegistScreen = () => {
                                 </div>
                             ))}
                             <Form.Label>CPF</Form.Label>
-                            <Form.Group controlId="CPF">
+                            <Form.Group controlId="cpf">
                                 <Form.Control
-                                    name="CPF"
+                                    
+                                    name="cpf"
                                     placeholder="Somente Numeros"
                                     className="cadastroCamp"
                                     type="number"
@@ -115,8 +116,9 @@ const RegistScreen = () => {
                                 <Form.Control.Feedback>Perfeito!</Form.Control.Feedback>
                             </Form.Group>
                             <Form.Label>Senha</Form.Label>
-                            <Form.Group controlId="Senha">
+                            <Form.Group controlId="senha">
                                 <Form.Control
+                                    onChange={senha => {setSenha(senha.target.value)}}
                                     name="senha"
                                     placeholder="*******"
                                     className="cadastroCamp"
@@ -147,8 +149,8 @@ const RegistScreen = () => {
                                     </Media>
                                 </Col>
                                 <Col xl={10}>
-                                    <p className="mt-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                    sed do eiusmod tempor incididunt ut labore et dolore
+                                    <p className="mt-1"> O Engravidei, Proporciona um ótimo calendario, integrado entre o médico e sua paciente
+                                    para anotações de consultas e retornos. 
                                     </p>
                                 </Col>
                             </Row>
@@ -161,8 +163,8 @@ const RegistScreen = () => {
                                 </Media>
                             </Col>
                             <Col xl={10}>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                sed do eiusmod tempor incididunt ut labore et dolore
+                                <p> Temos como uma das principais funcionalidades, nosso checklist. Onde tanto o médico pode adicionar e remover 
+                                    itens como a gestante.
                                 </p>
                             </Col>
                         </Row>
@@ -175,8 +177,8 @@ const RegistScreen = () => {
                                 </Media>
                             </Col>
                             <Col xl={10}>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                sed do eiusmod tempor incididunt ut labore et dolore
+                                <p> Nosso objetivo é garantir, por meio de nossas funcionalidades e forma unificada de informação,
+                                    a saúde tanto da gestante quanto do Bebê.
                                 </p>
                             </Col>
                         </Row>

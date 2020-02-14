@@ -6,8 +6,8 @@ import Media from 'react-bootstrap/Media'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
-
-
+import {SigIn, cadastro} from '../services/auth';
+import {setCookie} from '../utils/cookieUtil';
 
 import '../fonts/AvenirBook.otf';
 
@@ -16,18 +16,28 @@ import '../assets/App.css';
 import { Link } from 'react-router-dom';
 
 const MainScreen = () => {
-
-    const [validated, setValidated] = useState(false);
+    const [email, setEmail] = useState("");
+    const [senha, setSenha] = useState("");
 
     const handleSubmit = event => {
-        const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
+        event.preventDefault();
+        const form = {
+            email: email, 
+            senha: senha
         }
+        console.log(form);
 
-        setValidated(true);
+            SigIn(form.email, form.senha).then(resp => {
+                console.log(resp);
+                setCookie("token", resp.data.sessao.token, {expires: Number.parseInt(resp.data.sessao.duracao)} )
+                setCookie("userID", resp.data.usuario.id)
+                //location.assignment, para redirecionar para a pagina home
+            }).catch(error => {
+                console.log(error);
+            })
+        
     };
+
     return (
         <Container fluid className="geral p-0 pt-xl-5 pt-xs-0">
             <Container>
@@ -49,10 +59,11 @@ const MainScreen = () => {
                                     </Media>
                                 </Col>
                                 <Col xs={12} className="d-flex justify-content-center mb-5 mt-5">
-                                    <Form validated={validated} onSubmit={handleSubmit}>
+                                    <Form onSubmit={ handleSubmit }>
                                         <Form.Group controlId="EmailLogin">
                                             <Form.Control 
-                                            placeholder="Email"
+                                                onChange={email => {setEmail(email.target.value)}}
+                                                placeholder="Email"
                                                 className="loginCamp"
                                                 type="email"
                                                 required
@@ -61,6 +72,7 @@ const MainScreen = () => {
                                         </Form.Group>
                                         <Form.Group controlId="PasswordLogin">
                                                 <Form.Control
+                                                    onChange={senha => {setSenha(senha.target.value)}}
                                                     placeholder="Senha"
                                                     className="loginCamp"
                                                     type="password"
